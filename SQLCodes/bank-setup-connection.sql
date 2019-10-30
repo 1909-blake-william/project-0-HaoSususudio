@@ -1,0 +1,15 @@
+DROP USER bankDBConnection CASCADE;
+
+CREATE USER bankDBConnection
+IDENTIFIED BY bankDBPass1234
+DEFAULT TABLESPACE users
+TEMPORARY TABLESPACE temp
+QUOTA 10M ON users;
+
+GRANT CONNECT TO bankDBConnection;
+GRANT RESOURCE TO bankDBConnection;
+GRANT CREATE SESSION TO bankDBConnection;
+GRANT CREATE TABLE TO bankDBConnection;
+GRANT CREATE VIEW TO bankDBConnection;
+
+conn bankDBConnection/bankDBPass1234;
