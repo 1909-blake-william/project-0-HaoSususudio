@@ -45,7 +45,6 @@ public class TransactionDaoSQL implements TransactionDao {
 
       return generatedId;
     } catch (Exception e) {
-      // TODO: handle exception
       e.printStackTrace();
     }
     return 0;

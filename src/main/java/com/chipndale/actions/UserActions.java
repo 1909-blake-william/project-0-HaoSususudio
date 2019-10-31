@@ -40,7 +40,6 @@ public class UserActions {
   public static void createAccount(String ownerUsername, String designation, double intialBalance) {
     AccountDao accDao = AccountDao.currentImplementation;
     TransactionDao transDao = TransactionDao.currentImplementation;
-//    Account tempAccount = TempObjUtil.acctInst;
     TempObjUtil.acctInst.setOwnerUsername(ownerUsername);
     TempObjUtil.acctInst.setAccountType(designationMapToAccountType.get(designation));
     TempObjUtil.acctInst.setDesignation(designation);

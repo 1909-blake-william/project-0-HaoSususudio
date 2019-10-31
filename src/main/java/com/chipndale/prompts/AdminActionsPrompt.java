@@ -17,7 +17,7 @@ public class AdminActionsPrompt implements Prompt {
   public Prompt run() {
     ConsoleUtil.echo("Welcome Admin!");
     ConsoleUtil.echo("What do you want to do?");
-    ConsoleUtil.echo("Enter 'u' to view all users' info and login.");
+    ConsoleUtil.echo("Enter 'u' to view all users' logins and info.");
     ConsoleUtil.echo("Enter 'a' to view all accounts.");
     ConsoleUtil.echo("Enter 't' to view all transactions.");
     ConsoleUtil.echo("Enter 'q' to log out");
@@ -27,8 +27,8 @@ public class AdminActionsPrompt implements Prompt {
     switch (selection) {
     case "u":
       log.debug("Admin attempting to view all users.");
-      AdminActions.viewAllUserInfo();
       AdminActions.viewAllUserLogins();
+      AdminActions.viewAllUserInfo();
       return this;
     case "a":
       log.debug("Admin attempting to view all accounts.");

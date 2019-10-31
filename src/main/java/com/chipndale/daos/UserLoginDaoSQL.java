@@ -49,7 +49,7 @@ public class UserLoginDaoSQL implements UserLoginDao {
     log.debug("Attempting to find all users from DB");
     try (Connection c = DBConnectionUtil.getConnection()) {
 
-      String sql = "SELECT * FROM user_login";
+      String sql = "SELECT * FROM user_login ORDER BY username";
       PreparedStatement ps = c.prepareStatement(sql);
       ResultSet rs = ps.executeQuery();
 

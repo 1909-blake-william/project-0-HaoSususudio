@@ -1,5 +1,6 @@
 package com.chipndale.driver;
 
+import com.chipndale.actions.AdminActions;
 import com.chipndale.util.ConsoleUtil;
 
 public class BankTestDriver {
@@ -8,6 +9,7 @@ public class BankTestDriver {
 //    UserLoginDao userLoginDao = UserLoginDao.currentImplementation;
 //    UserInfoDao userInfodao = UserInfoDao.currentImplementation;
 //    AccountDao accDao = AccountDao.currentImplementation;
+    // Get SQL time instance
 
 //    Iterable<UserLogin> userlogins = userLoginDao.findAll();
 //    ConsoleUtil.printAsTable(userlogins);
@@ -16,17 +18,12 @@ public class BankTestDriver {
 //    for (User u : users) {
 //      System.out.println(u);
 //    }
-
+//    AdminActions.viewAllTransactions();
 //    System.setProperty("user.timezone", "America/New_York");
 //    System.out.println(ZonedDateTime.now());
 //    System.out.println();
 //    AdminActions.viewAllTransactions();
 //    
-    System.out.println("|" + ConsoleUtil.padRToLen("ttt", 10) + "|");
-    System.out.println("|" + ConsoleUtil.padLToLen("ttt", 10) + "|");
-    System.out.println(String.format("%2$s", 32, "Hello"));
-//    %0$-10s
-    //
 
 //    String salt = AuthUtil.generateSalt().get();
 //    String key = AuthUtil.hashPassword("pass", salt).get();

@@ -4,16 +4,13 @@ import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 
-import com.chipndale.models.UserLogin;
 import com.chipndale.util.AuthUtil;
 import com.chipndale.util.ConsoleUtil;
-import com.chipndale.util.TempObjUtil;
 
 public class AdminLoginPrompt implements Prompt {
   private Logger log = Logger.getRootLogger();
   private Scanner scan = new Scanner(System.in);
   private AuthUtil authUtil = AuthUtil.instance;
-  UserLogin tempUser = TempObjUtil.userLoginInst;
 
   @Override
   public Prompt run() {
