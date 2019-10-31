@@ -3,9 +3,11 @@ package com.chipndale.actions;
 import java.util.List;
 
 import com.chipndale.daos.AccountDao;
+import com.chipndale.daos.TransactionDao;
 import com.chipndale.daos.UserInfoDao;
 import com.chipndale.daos.UserLoginDao;
 import com.chipndale.models.Account;
+import com.chipndale.models.Transaction;
 import com.chipndale.models.UserInfo;
 import com.chipndale.models.UserLogin;
 import com.chipndale.util.ConsoleUtil;
@@ -36,6 +38,13 @@ public class AdminActions {
     AccountDao accDao = AccountDao.currentImplementation;
     List<Account> userAccounts = accDao.findAllByUsername(username);
     ConsoleUtil.printAsTable(userAccounts);
+    System.out.println();
+  }
+
+  public static void viewAllTransactions() {
+    TransactionDao transDao = TransactionDao.currentImplementation;
+    List<Transaction> allTransactions = transDao.findAll();
+    ConsoleUtil.printAsTable(allTransactions);
     System.out.println();
   }
 

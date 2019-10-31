@@ -10,34 +10,40 @@ import com.chipndale.util.ConsoleUtil;
 import com.chipndale.util.TempObjUtil;
 
 public class UserActions {
-  private static AuthUtil authUtil = AuthUtil.instance;
-  private static UserInfoDao userInfoDao = UserInfoDao.currentImplementation;
-  public static HashMap<String, String> accountTypeMap = new HashMap<>();
-  public static HashMap<String, String> designationUnitMap = new HashMap<>();
+  static AuthUtil authUtil = AuthUtil.instance;
+  static UserInfoDao userInfoDao = UserInfoDao.currentImplementation;
+  static HashMap<String, String> designationMapToAccountType = createMapToAccountType();
+  static HashMap<String, String> designationMapToUnit = createMapToUnit();
 
-  // Make lookup tables tying account type and unit to designation of the account
-  public static void initalizeAccDesignations() {
-    accountTypeMap.put("USD", "currency");
-    designationUnitMap.put("USD", "dollar");
-    accountTypeMap.put("RMB", "currency");
-    designationUnitMap.put("RMB", "yuan");
-    accountTypeMap.put("acron", "commodity");
-    designationUnitMap.put("acron", "count");
-    accountTypeMap.put("bone", "commodity");
-    designationUnitMap.put("bone", "count");
-    accountTypeMap.put("gold_nugget", "commodity");
-    designationUnitMap.put("gold_nugget", "ouce");
-    accountTypeMap.put("honey", "commodity");
-    designationUnitMap.put("honey", "kilogram");
+  private static HashMap<String, String> createMapToAccountType() {
+    HashMap<String, String> tempMap = new HashMap<>();
+    tempMap.put("USD", "currency");
+    tempMap.put("RMB", "currency");
+    tempMap.put("acron", "commodity");
+    tempMap.put("bone", "commodity");
+    tempMap.put("gold_nugget", "commodity");
+    tempMap.put("honey", "commodity");
+    return tempMap;
+  }
+
+  private static HashMap<String, String> createMapToUnit() {
+    HashMap<String, String> tempMap = new HashMap<>();
+    tempMap.put("USD", "dollar");
+    tempMap.put("RMB", "yuan");
+    tempMap.put("acron", "count");
+    tempMap.put("bone", "count");
+    tempMap.put("gold_nugget", "ounce");
+    tempMap.put("honey", "kilogram");
+    return tempMap;
   }
 
   public static void createAccount(String ownerUsername, String designation, double intialBalance) {
     AccountDao accDao = AccountDao.currentImplementation;
-    Account tempAccount = TempObjUtil.accountInstance;
+    Account tempAccount = TempObjUtil.acctInst;
     tempAccount.setOwnerUsername(ownerUsername);
-    tempAccount.setAccountType(accountTypeMap.get(designation));
+    tempAccount.setAccountType(designationMapToAccountType.get(designation));
     tempAccount.setDesignation(designation);
-    tempAccount.setUnit(designationUnitMap.get(designation));
+    tempAccount.setUnit(designationMapToUnit.get(designation));
     tempAccount.setBalance(intialBalance);
     accDao.save(tempAccount);
   };
@@ -65,13 +71,5 @@ public class UserActions {
       System.out.println();
     }
     return numOfActiveAccounts;
-  }
-
-  public static void createNewCurrencyAccount() {
-
-  }
-
-  public static void createNewComodityAccount() {
-
   }
 }

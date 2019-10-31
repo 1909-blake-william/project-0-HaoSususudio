@@ -86,7 +86,7 @@ public class Account implements IHavingTableHeader {
 
   @Override
   public String toTableHeader() {
-    return ConsoleUtil.padRToLen("Acc. ID", 10) + ConsoleUtil.padRToLen("Owner's Username", 20)
+    return ConsoleUtil.padRToLen("Acct. ID", 10) + ConsoleUtil.padRToLen("Owner's Username", 20)
         + ConsoleUtil.padRToLen("Account Type", 15) + ConsoleUtil.padRToLen("Designation", 20)
         + ConsoleUtil.padRToLen("Balance", 20) + ConsoleUtil.padRToLen("Unit", 15)
         + ConsoleUtil.padRToLen("Status", 15);

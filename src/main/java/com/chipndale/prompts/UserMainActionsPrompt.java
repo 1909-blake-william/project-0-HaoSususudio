@@ -19,8 +19,7 @@ public class UserMainActionsPrompt implements Prompt {
   @Override
   public Prompt run() {
     String currentUsername = authUtil.getCurrentUserLogin().getUsername();
-    UserActions.initalizeAccDesignations();
-
+ 
     if (!isUserInfoExists(currentUsername)) {
       return new CreateUserInfoPrompt();
     } else {

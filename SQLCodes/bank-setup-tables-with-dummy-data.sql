@@ -1,11 +1,15 @@
+ALTER SESSION SET TIME_ZONE='-5:00';
 ---------Delete old stuff--------------------------
 DROP SEQUENCE account_id_seq;
 DROP SEQUENCE user_id_seq;
+DROP SEQUENCE transaction_id_seq;
 DROP TRIGGER account_id_trig;
 DROP TRIGGER user_id_trig;
+DROP TRIGGER transaction_id_trig;
 --DROP PROCEDURE update_account;
 --DROP PROCEDURE new_user_login;
 --DROP PROCEDURE new_user_info;
+DROP TABLE transaction_log;
 DROP TABLE account;
 DROP TABLE user_info;
 DROP TABLE user_login;
@@ -34,11 +38,20 @@ CREATE TABLE user_login
     designation varchar2(20),
     unit varchar2(15),
     balance number(12,2) DEFAULT 0,
-    account_status varchar2(10) DEFAULT 'active' NOT NULL
+    account_status varchar2(15) DEFAULT 'active' NOT NULL
 );
---------------------Sequences for ID-----------------------------
-CREATE SEQUENCE user_id_seq; -- used as id assign value 
-CREATE SEQUENCE account_id_seq; -- used as id assign value 
+CREATE TABLE transaction_log
+(
+    transaction_id int PRIMARY KEY,
+    account_id int REFERENCES account(account_id),
+    transaction_type varchar2(15),
+    delta_balance number(12,2) DEFAULT 0,
+    time_stamp TIMESTAMP-- WITH TIME ZONE
+);
+--------------------Sequences for ID assignment --------------------------
+CREATE SEQUENCE user_id_seq; 
+CREATE SEQUENCE account_id_seq; 
+CREATE SEQUENCE transaction_id_seq;
 ---------------------TRIGGERS----------------------------------
 CREATE OR REPLACE TRIGGER account_id_trig
 BEFORE INSERT OR UPDATE ON account
@@ -59,6 +72,17 @@ BEGIN
         SELECT user_id_seq.nextval INTO :new.user_id FROM dual;
     ELSIF UPDATING THEN
         SELECT :old.user_id INTO :new.user_id FROM dual;
+    END IF;
+END;
+/
+CREATE OR REPLACE TRIGGER transaction_id_trig
+BEFORE INSERT OR UPDATE ON transaction_log
+FOR EACH ROW
+BEGIN
+    IF INSERTING THEN
+        SELECT transaction_id_seq.nextval INTO :new.transaction_id FROM dual;
+    ELSIF UPDATING THEN
+        SELECT :old.transaction_id INTO :new.transaction_id FROM dual;
     END IF;
 END;
 /
@@ -120,6 +144,20 @@ BEGIN
     WHERE account_id = account_id_in;
 END;
 /
+CREATE OR REPLACE PROCEDURE insert_transaction_log
+(
+    account_id IN int,
+    transaction_type IN varchar2,
+    delta_balance IN number,
+    generated_id OUT int
+)
+AS
+BEGIN
+    INSERT INTO transaction_log(account_id, transaction_type, delta_balance, time_stamp)
+    VALUES (account_id, transaction_type, delta_balance, SYSDATE)
+    RETURNING transaction_id INTO generated_id;
+END;
+/
 ---------------------DUMMY DATA INSERTION-----------------------------------------
 SET SERVEROUTPUT ON
 DECLARE gen_id int;
@@ -136,7 +174,7 @@ BEGIN
     new_user_info('pluto', 'Pluto', 'Bonedigger', 'barkwoofbarkbark', 'pluto@disney.com', gen_id);
     new_user_info('donaldduck', 'Donald', 'Truck', '25687', 'potus@wh.gov', gen_id);
     new_user_info('whinniethepooh', 'Winnie', 'Xi', '8699504523', 'wxjp@163.com', gen_id);
-    create_new_account('mickey', 'currency', 'USD', 'dollar', 2355645.24, gen_id);
+    create_new_account('mickey', 'currency', 'USD', 'dollar', 2354645.24, gen_id);
     create_new_account('mickey', 'currency', 'RMB', 'yuan', 53365.50, gen_id);
     create_new_account('chip', 'commodity', 'acron', 'count', 652, gen_id);
     create_new_account('dale', 'commodity', 'acron', 'count', 0, gen_id);
@@ -154,8 +192,11 @@ BEGIN
     create_new_account('donaldduck', 'currency', 'RMB', 'yuan', 584235.00, gen_id);
     create_new_account('whinniethepooh', 'commodity', 'honey', 'count', 2, gen_id);
     create_new_account('whinniethepooh', 'currency', 'USD', 'dollar', 25632145, gen_id);
-    create_new_account('whinniethepooh', 'currency', 'RMB', 'yuan',8567352668.00, gen_id);
-    
+    create_new_account('whinniethepooh', 'currency', 'RMB', 'yuan',8563668.00, gen_id);
+    insert_transaction_log(  1 ,'deposit', 20, gen_id);
+    insert_transaction_log(  1 ,'withdraw', 20, gen_id);
+    insert_transaction_log(  1 ,'deposit', 30, gen_id);
+    insert_transaction_log(  1 ,'deposit', 20, gen_id);
 END;
 /
 UPDATE  user_login
@@ -168,7 +209,23 @@ UPDATE  user_login
 SET     role = 'manager'
 WHERE   username = 'dale';
 COMMIT;
-----------TEST DUMMY DATA----------------------------
+
+-- INSERT INTO transaction_log( account_id, transaction_type, delta_balance, time_stamp)
+-- VALUES(  1 ,'deposit', 20, SYSDATE);
+-- INSERT INTO transaction_log( account_id, transaction_type, delta_balance, time_stamp)
+-- VALUES( 1 ,'deposit', 20, SYSDATE);
+-- INSERT INTO transaction_log( account_id, transaction_type, delta_balance, time_stamp)
+-- VALUES(  1 ,'deposit', 20, SYSDATE);
+-- INSERT INTO transaction_log( account_id, transaction_type, delta_balance, time_stamp)
+-- VALUES( 1 ,'deposit', 20, SYSDATE);
+-- INSERT INTO transaction_log( account_id, transaction_type, delta_balance, time_stamp)
+-- VALUES(  1 ,'deposit', 20, SYSDATE);
+-- INSERT INTO transaction_log( account_id, transaction_type, delta_balance, time_stamp)
+-- VALUES( 1 ,'deposit', 20, SYSDATE);
+
+
+----------SHOW DUMMY DATA----------------------------
 SELECT * FROM user_login;
 SELECT * FROM user_info;
 SELECT * FROM account;
+SELECT * FROM transaction_log;

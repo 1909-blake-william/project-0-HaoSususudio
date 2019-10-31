@@ -12,7 +12,7 @@ import com.chipndale.util.TempObjUtil;
 public class CreateUserInfoPrompt implements Prompt {
   private Scanner scan = new Scanner(System.in);
   private AuthUtil authUtil = AuthUtil.instance;
-  UserInfo tempUserInfo = TempObjUtil.userInfoInstance;
+  UserInfo tempUserInfo = TempObjUtil.userInfoInst;
   private UserInfoDao userInfoDao = UserInfoDao.currentImplementation;
 
   @Override

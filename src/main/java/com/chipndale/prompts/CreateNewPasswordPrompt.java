@@ -11,7 +11,7 @@ import com.chipndale.util.TempObjUtil;
 public class CreateNewPasswordPrompt implements Prompt {
 //  private Logger log = Logger.getRootLogger();
   private Scanner scan = new Scanner(System.in);
-  UserLogin tempUser = TempObjUtil.userLoginInstance;
+  UserLogin tempUser = TempObjUtil.userLoginInst;
   private UserLoginDao userDao = UserLoginDao.currentImplementation;
 
   @Override

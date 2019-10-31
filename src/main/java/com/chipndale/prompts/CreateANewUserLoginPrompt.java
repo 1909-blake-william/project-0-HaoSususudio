@@ -13,7 +13,7 @@ public class CreateANewUserLoginPrompt implements Prompt {
   private Logger log = Logger.getRootLogger();
   private Scanner scan = new Scanner(System.in);
   private AuthUtil authUtil = AuthUtil.instance;
-  UserLogin tempUser = TempObjUtil.userLoginInstance;
+  UserLogin tempUser = TempObjUtil.userLoginInst;
 
 //  private User user = new User();
 

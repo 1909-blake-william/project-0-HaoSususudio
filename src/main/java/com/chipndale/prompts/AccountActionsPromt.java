@@ -2,6 +2,7 @@ package com.chipndale.prompts;
 
 import java.util.Scanner;
 
+import com.chipndale.actions.AccountActions;
 import com.chipndale.daos.AccountDao;
 import com.chipndale.util.ConsoleUtil;
 
@@ -11,8 +12,7 @@ public class AccountActionsPromt implements Prompt {
 
   public Prompt run(int accountId) {
     ConsoleUtil.printAsTable(accDao.findById(accountId));
-    // TODO showTransactions()
-
+    AccountActions.showTransactions(accountId);
     ConsoleUtil.echo("Enter 'd' to deposit.");
     ConsoleUtil.echo("Enter 'w' to withdraw");
     ConsoleUtil.echo("Enter 'delete' to delete this account.");
