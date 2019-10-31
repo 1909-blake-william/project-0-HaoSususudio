@@ -56,7 +56,7 @@ public class TransactionDaoSQL implements TransactionDao {
     log.debug("Attempting to find all transactions from DB");
     try (Connection c = DBConnectionUtil.getConnection()) {
 
-      String sql = "SELECT * FROM transaction_log";
+      String sql = "SELECT * FROM transaction_log ORDER BY transaction_id";
       PreparedStatement ps = c.prepareStatement(sql);
       ResultSet rs = ps.executeQuery();
 
@@ -76,7 +76,7 @@ public class TransactionDaoSQL implements TransactionDao {
     log.debug("Attempting to find all transactions from DB");
     try (Connection c = DBConnectionUtil.getConnection()) {
 
-      String sql = "SELECT * FROM transaction_log WHERE account_id = ?";
+      String sql = "SELECT * FROM transaction_log WHERE account_id = ? ORDER BY transaction_id";
       PreparedStatement ps = c.prepareStatement(sql);
       ps.setInt(1, accountId);
       ResultSet rs = ps.executeQuery();
