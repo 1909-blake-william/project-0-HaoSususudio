@@ -2069,3 +2069,89 @@
 2019-10-31 12:39:14 DEBUG AdminActionsPrompt:29 - Admin attempting to view all users.
 2019-10-31 12:39:14 DEBUG UserLoginDaoSQL:49 - Attempting to find all users from DB
 2019-10-31 12:39:14 DEBUG UserInfoDaoSQL:56 - Attempting to find all users from DB
+2019-10-31 12:45:11 DEBUG UserLoginDaoSQL:70 - Attempting to find user by username from DB
+2019-10-31 12:45:19 DEBUG UserLoginDaoSQL:30 - attempting to find user by credentials from DB
+2019-10-31 12:45:20 DEBUG CreateNewPasswordPrompt:26 - a new user login is created.
+2019-10-31 12:45:20 DEBUG UserLoginDaoSQL:70 - Attempting to find user by username from DB
+2019-10-31 12:45:20 DEBUG CreateNewPasswordPrompt:28 - successfully logged in
+2019-10-31 12:45:20 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 12:45:29 DEBUG UserInfoDaoSQL:33 - attempting to save user info
+2019-10-31 12:45:29 DEBUG UserInfoDaoSQL:46 - generated user id is: 14
+2019-10-31 12:45:29 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 12:45:30 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 12:45:30 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 12:45:30 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 12:45:30 DEBUG AccountDaoSQL:123 - Attempting to find all accounts by username from DB
+2019-10-31 12:45:35 DEBUG AccountDaoSQL:123 - Attempting to find all accounts by username from DB
+2019-10-31 12:45:40 DEBUG AccountDaoSQL:34 - attempting to save an Account
+2019-10-31 12:45:41 DEBUG AccountDaoSQL:47 - generated Account id is: 28
+2019-10-31 12:45:41 DEBUG TransactionDaoSQL:33 - attempting to save a transaction to DB
+2019-10-31 12:45:41 DEBUG TransactionDaoSQL:44 - generated transaction id is: 27
+2019-10-31 12:45:41 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 12:45:41 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 12:45:41 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 12:45:41 DEBUG AccountDaoSQL:123 - Attempting to find all accounts by username from DB
+2019-10-31 12:45:42 DEBUG AccountDaoSQL:123 - Attempting to find all accounts by username from DB
+2019-10-31 12:45:46 DEBUG AccountDaoSQL:123 - Attempting to find all accounts by username from DB
+2019-10-31 12:45:48 DEBUG UserLoginPrompt:20 - Attempting to login.
+2019-10-31 12:45:51 DEBUG UserLoginDaoSQL:70 - Attempting to find user by username from DB
+2019-10-31 12:45:51 DEBUG UserLoginPrompt:28 - failed to login due to credentials
+2019-10-31 12:45:56 DEBUG AdminLoginPrompt:17 - Attempting to login as Admin.
+2019-10-31 12:46:01 DEBUG UserLoginDaoSQL:70 - Attempting to find user by username from DB
+2019-10-31 12:46:01 DEBUG AdminLoginPrompt:29 - successfully logged in as Admin.
+2019-10-31 12:46:04 DEBUG AdminActionsPrompt:34 - Admin attempting to view all accounts.
+2019-10-31 12:46:04 DEBUG AccountDaoSQL:79 - Attempting to find all accounts from DB
+2019-10-31 12:46:10 DEBUG AdminActionsPrompt:38 - Admin attempting to view all transactions.
+2019-10-31 12:46:10 DEBUG TransactionDaoSQL:55 - Attempting to find all transactions from DB
+2019-10-31 13:03:34 DEBUG UserLoginPrompt:20 - Attempting to login.
+2019-10-31 13:03:39 DEBUG UserLoginDaoSQL:70 - Attempting to find user by username from DB
+2019-10-31 13:03:40 DEBUG UserLoginPrompt:32 - successfully logged in
+2019-10-31 13:03:40 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 13:03:41 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 13:03:41 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 13:03:41 DEBUG AccountDaoSQL:123 - Attempting to find all accounts by username from DB
+2019-10-31 13:03:41 DEBUG AccountDaoSQL:123 - Attempting to find all accounts by username from DB
+2019-10-31 13:03:50 DEBUG AccountDaoSQL:123 - Attempting to find all accounts by username from DB
+2019-10-31 13:03:53 DEBUG UserLoginPrompt:20 - Attempting to login.
+2019-10-31 13:03:58 DEBUG UserLoginDaoSQL:70 - Attempting to find user by username from DB
+2019-10-31 13:03:58 DEBUG UserLoginPrompt:32 - successfully logged in
+2019-10-31 13:03:58 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 13:03:59 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 13:03:59 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 13:03:59 DEBUG AccountDaoSQL:123 - Attempting to find all accounts by username from DB
+2019-10-31 13:03:59 DEBUG AccountDaoSQL:123 - Attempting to find all accounts by username from DB
+2019-10-31 13:04:01 DEBUG AccountDaoSQL:123 - Attempting to find all accounts by username from DB
+2019-10-31 13:04:01 DEBUG AccountDaoSQL:146 - Attempting to find account by accountId
+2019-10-31 13:04:01 DEBUG TransactionDaoSQL:75 - Attempting to find all transactions from DB
+2019-10-31 13:04:05 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 13:04:05 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 13:04:06 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 13:04:06 DEBUG AccountDaoSQL:123 - Attempting to find all accounts by username from DB
+2019-10-31 13:04:06 DEBUG AccountDaoSQL:123 - Attempting to find all accounts by username from DB
+2019-10-31 13:04:11 DEBUG AccountDaoSQL:123 - Attempting to find all accounts by username from DB
+2019-10-31 13:04:12 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 13:04:12 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 13:04:12 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 13:04:12 DEBUG UserInfoDaoSQL:98 - Attempting to find UserInfo by username
+2019-10-31 13:04:13 DEBUG AccountDaoSQL:123 - Attempting to find all accounts by username from DB
+2019-10-31 13:04:13 DEBUG AccountDaoSQL:123 - Attempting to find all accounts by username from DB
+2019-10-31 13:04:18 DEBUG AccountDaoSQL:123 - Attempting to find all accounts by username from DB
+2019-10-31 13:04:19 DEBUG UserLoginPrompt:20 - Attempting to login.
+2019-10-31 13:04:21 DEBUG UserLoginDaoSQL:70 - Attempting to find user by username from DB
+2019-10-31 13:04:21 DEBUG UserLoginPrompt:28 - failed to login due to credentials
+2019-10-31 13:04:31 DEBUG AdminLoginPrompt:17 - Attempting to login as Admin.
+2019-10-31 13:04:41 DEBUG UserLoginDaoSQL:70 - Attempting to find user by username from DB
+2019-10-31 13:04:41 DEBUG AdminLoginPrompt:29 - successfully logged in as Admin.
+2019-10-31 13:04:43 DEBUG AdminActionsPrompt:29 - Admin attempting to view all users.
+2019-10-31 13:04:43 DEBUG UserLoginDaoSQL:49 - Attempting to find all users from DB
+2019-10-31 13:04:44 DEBUG UserInfoDaoSQL:56 - Attempting to find all users from DB
+2019-10-31 13:05:31 DEBUG AdminLoginPrompt:17 - Attempting to login as Admin.
+2019-10-31 13:05:36 DEBUG UserLoginDaoSQL:70 - Attempting to find user by username from DB
+2019-10-31 13:05:38 DEBUG AdminLoginPrompt:29 - successfully logged in as Admin.
+2019-10-31 13:05:39 DEBUG AdminActionsPrompt:29 - Admin attempting to view all users.
+2019-10-31 13:05:39 DEBUG UserLoginDaoSQL:49 - Attempting to find all users from DB
+2019-10-31 13:05:40 DEBUG UserInfoDaoSQL:56 - Attempting to find all users from DB
+2019-10-31 13:05:42 DEBUG AdminActionsPrompt:34 - Admin attempting to view all accounts.
+2019-10-31 13:05:42 DEBUG AccountDaoSQL:79 - Attempting to find all accounts from DB
+2019-10-31 13:05:46 DEBUG AdminActionsPrompt:38 - Admin attempting to view all transactions.
+2019-10-31 13:05:46 DEBUG TransactionDaoSQL:55 - Attempting to find all transactions from DB
