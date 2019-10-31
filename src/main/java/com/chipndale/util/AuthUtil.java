@@ -41,12 +41,23 @@ public class AuthUtil {
 
   public UserLogin loginAsAdmin(String adminUsername, String password) {
     UserLogin u = login(adminUsername, password);
-    if ("admin".equals(u.getRole())) {
+    if (u == null) {
+      return null;
+    } else if ("admin".equals(u.getRole())) {
       currentUserLogin = u;
       return u;
     } else {
       return null;
     }
+  }
+
+  public void generateAndSaveNewUserLogin(String username, String password) {
+    String salt = generateSalt().get();
+    String key = hashPassword(password, salt).get();
+    TempObjUtil.userLoginInst.setSaltForPassword(salt);
+    TempObjUtil.userLoginInst.setSecureKey(key);
+    UserLoginDao userDao = UserLoginDao.currentImplementation;
+    userDao.save(TempObjUtil.userLoginInst);
   }
 
   public boolean ifUserExistsInDB(String username) {

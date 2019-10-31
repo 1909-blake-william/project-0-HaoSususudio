@@ -19,6 +19,10 @@ public class ConsoleUtil {
   public static String padRToLen(String str, int length) {
     return String.format("%0$-" + length + "s", str);
   }
+  
+  public static String padLToLen(String str, int length) {
+    return String.format( "%0$" + length + "s", str);
+  }
 
   public static <T extends IHavingTableHeader> void printAsTable(Iterable<T> iter) {
     boolean isTableHeaderPrinted = false;
@@ -33,6 +37,7 @@ public class ConsoleUtil {
   }
 
   public static void printAsTable(IHavingTableHeader cndModel) {
+    System.out.println();
     System.out.println(cndModel.toTableHeader());
     hLine(cndModel.toTableHeader().length());
     System.out.println(cndModel);

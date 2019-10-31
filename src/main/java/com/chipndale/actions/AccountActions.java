@@ -16,12 +16,12 @@ public class AccountActions {
     System.out.println("acc id: " + accountId);
     List<Transaction> tempTrans = transDao.findAllByAccountId(accountId);
     ConsoleUtil.printAsTable(tempTrans);
-    System.out.println();
   }
 
   public static void deposit(int accountId, double amount) {
     TempObjUtil.acctInst = accDao.findById(accountId);
-    TempObjUtil.acctInst.setBalance(TempObjUtil.acctInst.getBalance() + amount);
+    double newBalance = TempObjUtil.acctInst.getBalance() + amount;
+    TempObjUtil.acctInst.setBalance(newBalance);
     accDao.update(TempObjUtil.acctInst);
     TempObjUtil.transcInst.setAccountId(accountId);
     TempObjUtil.transcInst.setTransactionType("deposit");
@@ -34,7 +34,8 @@ public class AccountActions {
     if (TempObjUtil.acctInst.getBalance() < amount) {
       ConsoleUtil.echo("Not enough balance.");
     } else {
-      TempObjUtil.acctInst.setBalance(TempObjUtil.acctInst.getBalance() - amount);
+      double newBalance = TempObjUtil.acctInst.getBalance() - amount;
+      TempObjUtil.acctInst.setBalance(newBalance);
       accDao.update(TempObjUtil.acctInst);
       TempObjUtil.transcInst.setAccountId(accountId);
       TempObjUtil.transcInst.setTransactionType("withdraw");
@@ -50,6 +51,7 @@ public class AccountActions {
     TempObjUtil.transcInst.setAccountId(accountId);
     TempObjUtil.transcInst.setTransactionType("deactivation");
     TempObjUtil.transcInst.setDeltaBalance(0);
+    transDao.save(TempObjUtil.transcInst);
   }
 
 }

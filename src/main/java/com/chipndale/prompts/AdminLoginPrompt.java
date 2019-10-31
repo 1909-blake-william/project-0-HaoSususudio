@@ -29,8 +29,6 @@ public class AdminLoginPrompt implements Prompt {
       ConsoleUtil.echo("Invalid Credentials");
       return new MainLoginPrompt();
     } else {
-      // TODO actual login
-
       log.debug("successfully logged in as Admin.");
       return new AdminActionsPrompt();
     }

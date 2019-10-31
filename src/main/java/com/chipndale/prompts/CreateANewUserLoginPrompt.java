@@ -28,7 +28,8 @@ public class CreateANewUserLoginPrompt implements Prompt {
       return this;
     } else {
       tempUser.setUsername(inputUsername);
-      return new CreateNewPasswordPrompt();
+      return new CreateNewPasswordPrompt().run(inputUsername);
     }
   }
+  
 }

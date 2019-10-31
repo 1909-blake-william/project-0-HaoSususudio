@@ -3,8 +3,8 @@ package com.chipndale.actions;
 import java.util.HashMap;
 
 import com.chipndale.daos.AccountDao;
+import com.chipndale.daos.TransactionDao;
 import com.chipndale.daos.UserInfoDao;
-import com.chipndale.models.Account;
 import com.chipndale.util.AuthUtil;
 import com.chipndale.util.ConsoleUtil;
 import com.chipndale.util.TempObjUtil;
@@ -39,13 +39,18 @@ public class UserActions {
 
   public static void createAccount(String ownerUsername, String designation, double intialBalance) {
     AccountDao accDao = AccountDao.currentImplementation;
-    Account tempAccount = TempObjUtil.acctInst;
-    tempAccount.setOwnerUsername(ownerUsername);
-    tempAccount.setAccountType(designationMapToAccountType.get(designation));
-    tempAccount.setDesignation(designation);
-    tempAccount.setUnit(designationMapToUnit.get(designation));
-    tempAccount.setBalance(intialBalance);
-    accDao.save(tempAccount);
+    TransactionDao transDao = TransactionDao.currentImplementation;
+//    Account tempAccount = TempObjUtil.acctInst;
+    TempObjUtil.acctInst.setOwnerUsername(ownerUsername);
+    TempObjUtil.acctInst.setAccountType(designationMapToAccountType.get(designation));
+    TempObjUtil.acctInst.setDesignation(designation);
+    TempObjUtil.acctInst.setUnit(designationMapToUnit.get(designation));
+    TempObjUtil.acctInst.setBalance(intialBalance);
+    int accountId = accDao.save(TempObjUtil.acctInst);
+    TempObjUtil.transcInst.setAccountId(accountId);
+    TempObjUtil.transcInst.setTransactionType("new_account");
+    TempObjUtil.transcInst.setDeltaBalance(intialBalance);
+    transDao.save(TempObjUtil.transcInst);
   };
 
   public static void showUserInfo() {
